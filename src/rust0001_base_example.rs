@@ -33,5 +33,9 @@ pub fn data_type() {
     let b:bool = false;
     let b : bool = true;
 
+    //字符类型 - rust 字符使用的是Unicode编码 占用4 个字节
+    let c : char = '总';
+    
+    //复合类型
     
 }
