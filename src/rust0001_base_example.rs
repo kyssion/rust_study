@@ -14,13 +14,7 @@ pub fn test1() {
 //常量可以定义在全局外
 const MAX_LENGTH: i32 = 1000;
 
-pub fn data_type() {package main
-
-    import "fmt"
-    
-    func main() {
-        fmt.Print("sdfsdfsdf")
-    }
+pub fn data_type() {
     //整形
     let i: i8;
     let i: i16;
@@ -44,11 +38,4 @@ pub fn data_type() {package main
     
     //复合类型
     
-}
-package main
-
-import "fmt"
-
-func main() {
-	fmt.Print("sdfsdfsdf")
 }
