@@ -5,15 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) 启动",
-            "type": "cppvsdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "输入程序名称，例如 ${workspaceFolder}/a.exe",
+            "name": "Debug executable 'rust_study'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rust_study",
+                    "--package=rust_study"
+                ],
+                "filter": {
+                    "name": "rust_study",
+                    "kind": "bin"
+                }
+            },
             "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'rust_study'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=rust_study",
+                    "--package=rust_study"
+                ],
+                "filter": {
+                    "name": "rust_study",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
