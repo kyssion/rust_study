@@ -21,7 +21,6 @@ pub fn data_type() {package main
     func main() {
         fmt.Print("sdfsdfsdf")
     }
-    
     //整形
     let i: i8;
     let i: i16;
