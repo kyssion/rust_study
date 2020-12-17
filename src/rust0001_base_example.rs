@@ -118,6 +118,17 @@ pub fn process_test(){
         break 1+123;
     };
 
+    // while - 没有表达式语法
+
+    let a = while  number<5 {
+        break 10;
+    };
+
+    //for - 特点，是使用迭代器的非常优秀的循环
+    let arr = [1,2,3,4,5];
+    for number in arr.iter(){
+        println!(number);
+    }
 
 }
 
