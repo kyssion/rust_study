@@ -1,5 +1,5 @@
 use rand::Rng;
-use std::cmp::Ordering;
+use std::{cmp::Ordering, iter::Sum};
 use std::io;
 
 pub fn test1() {
@@ -31,3 +31,10 @@ pub fn test1() {
         }
     }
 }
+
+
+pub trait Summary {
+    fn summar(&self)->String;
+}
+
+pub fn notify(item: impl Summary){}
