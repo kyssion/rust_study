@@ -47,6 +47,11 @@ pub fn data_type() {
     // todo 数组
     let a = [1,2,3,4,5,6]; // 数组初始化
     let b : [i32; 10]; // 初始化声明数组
+
+    //todo 字符串
+
+    let str = "&str"; // 这个是字符串字面量，不能进行修改
+    let str = String::from("String"); //堆分配字符串
 }
 
 
