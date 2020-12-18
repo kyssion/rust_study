@@ -5,4 +5,8 @@ mod rust0002_ownership;
 
 fn main() {
     println!("this is main function");
+
+    let str = String::from("this main func");
+    let item = &str;
+    println!("{}",str)
 }

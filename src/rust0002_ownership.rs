@@ -29,9 +29,9 @@ pub fn ownership_main(){
 
     //todo 使用&标记定义，可以做到在不获取变量的所有权的时候使用这个数值
     let i = String::from("item string");
-    let z = &i;
-    println!(z);
-    println!(i);
+    let z = &i;  //  获取这个值的引用
+
+
 }
 
 
