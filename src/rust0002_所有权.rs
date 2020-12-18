@@ -20,4 +20,16 @@ pub fn ownership_main(){
     let v = j.clone();//使用clone 可以获取一个string字符串的clone
     // println!(i);
 
+
+    // todo 函数 变量的克隆和转移
+    // todo 中函数其实和 变量相同，当传入变量的时候相当于进行赋值操作 ， 返回的时候相当于赋值时候的所有权
+
+    let s = String::from("sdf");
+    let s = test_fn(s);// 此时S已经没有任何作用域的信息
+
+}
+
+
+pub fn test_fn(s:String)-> String{
+    return s;
 }
