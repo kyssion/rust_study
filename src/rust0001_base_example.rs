@@ -1,5 +1,3 @@
-use std::arch::mips::break_;
-
 pub fn test1() {
     //let 和mut let mut 类型可以进行定义并且进行相关的修改
     let value1 = 10;
@@ -121,13 +119,13 @@ pub fn process_test(){
     // while - 没有表达式语法
 
     let a = while  number<5 {
-        break 10;
+        break;
     };
 
     //for - 特点，是使用迭代器的非常优秀的循环
     let arr = [1,2,3,4,5];
     for number in arr.iter(){
-        println!(number);
+        println!("{:?}",number);
     }
 
 }
