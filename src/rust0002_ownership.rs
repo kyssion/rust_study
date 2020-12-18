@@ -27,6 +27,11 @@ pub fn ownership_main(){
     let s = String::from("sdf");
     let s = test_fn(s);// 此时S已经没有任何作用域的信息
 
+    //todo 使用&标记定义，可以做到在不获取变量的所有权的时候使用这个数值
+    let i = String::from("item string");
+    let z = &i;
+    println!(z);
+    println!(i);
 }
 
 
