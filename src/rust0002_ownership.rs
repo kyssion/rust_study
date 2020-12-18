@@ -31,10 +31,35 @@ pub fn ownership_main(){
     let i = String::from("item string");
     let z = &i;  //  获取这个值的引用
 
+    //todo 引用可以具有可变的特性
+    let mut i = String::from("can change string");
+    let mut j = &mut i;
+    j.push_str("test");
+
+    // todo 注意在rust中，rust的规则保证一个变量一个时间只能有一个标记进行引用
+    // todo 也就是说针对这种可以进行修改的引用，在同一个时间内只有一个有效果
+    // todo rust 的引用规则其实简单的说有一下的几个规则
+    // todo 以可变引用为分界线，形成代码快，每一个代码块中的所有不可变引用都应该保证在块外没有使用
+    let mut i = String::from("sdfsdf");
+    let k = &i;
+    let j = &i;
+    println!("{},{}",k,j);
+    let mut p = &mut i;
+    println!("{}",p);// true
+
+    i.push_str("ssss");
+    //println!("{}",p);// todo error 这里因为i.push 方法内部使用的&mut self 等价于调用了 &mut i 所以这里发生了数据迁移，导致问题了
+
+    let j = &mut i;
 
 }
 
 
 pub fn test_fn(s:String)-> String{
     return s;
+}
+
+//使用引用的方法进行直接的参数传递
+pub fn test2_fn(s: &String)->usize{
+    return s.len();
 }
