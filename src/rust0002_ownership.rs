@@ -46,12 +46,38 @@ pub fn ownership_main(){
     println!("{},{}",k,j);
     let mut p = &mut i;
     println!("{}",p);// true
-
     i.push_str("ssss");
     //println!("{}",p);// todo error 这里因为i.push 方法内部使用的&mut self 等价于调用了 &mut i 所以这里发生了数据迁移，导致问题了
 
     let j = &mut i;
 
+    //todo 这里还涉及到一个生命周期的问题，这个暂时不进行讨论
+
+    // --- ---- ---- 切片 --- --- ---- ---
+    //todo 切片和 引用非常类似，切片是针对连续存储空间的结合进行操作，同样不会发生所有权转移
+
+    let mut str = String::from("test string");
+    let itemStr = &str[0..1];
+
+}
+
+
+//todo 使用切片技术来解释一下这种场景
+fn test_main() {
+    let mut string = String::from("test item");
+    let word = test3_fn(&string);
+    println!(word);
+    string.clear(); // todo -> 这里是一个可变的引用，使用这种方法将会导致这个变量对应之前的所有引用都无效化
+}
+
+pub fn test3_fn(s:&String) -> &str{
+    let bytes = s.as_bytes();
+    for (i,&item) in bytes.iter().enumerate(){
+        if item == b' '{
+            return &s[0..i];
+        }
+    }
+    return &s[..];
 }
 
 

@@ -4,17 +4,18 @@ mod rust0000_official_example;
 mod rust0002_ownership;
 
 fn main() {
-    let mut i = String::from("sdfsdf");
-    let k = &i;
-    let j = &i;
-    println!("{},{}",k,j);
-    let mut p = &mut i;
-    println!("{}",p);// true
+    let mut string = String::from("test item");
+    let word = test3_fn(&string);
+    string.clear();
+    println!(word);
+}
 
-    i.push_str("ssss");
-    //println!("{}",p);// error
-
-    let j = &mut i;
-
-
+pub fn test3_fn(s:&String) -> &str{
+    let bytes = s.as_bytes();
+    for (i,&item) in bytes.iter().enumerate(){
+        if item == b' '{
+            return &s[0..i];
+        }
+    }
+    return &s[..];
 }
