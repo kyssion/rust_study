@@ -55,6 +55,7 @@ pub fn ownership_main(){
 
     // --- ---- ---- 切片 --- --- ---- ---
     //todo 切片和 引用非常类似，切片是针对连续存储空间的结合进行操作，同样不会发生所有权转移
+    //todo 切片现在有数组切片和字符串切片两种
 
     let mut str = String::from("test string");
     let itemStr = &str[0..1];
