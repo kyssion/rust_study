@@ -5,10 +5,7 @@ mod rust0002_ownership;
 mod rust0003_struct;
 
 fn main() {
-    let mut string = String::from("test item");
-    let word = test3_fn(&string);
-    string.clear();
-    println!(word);
+    println!("sdfsdfds");
 }
 
 pub fn test3_fn(s:&String) -> &str{

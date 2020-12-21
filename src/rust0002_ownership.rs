@@ -67,7 +67,7 @@ pub fn ownership_main(){
 fn test_main() {
     let mut string = String::from("test item");
     let word = test3_fn(&string);
-    println!(word);
+    println!("{}",word);
     string.clear(); // todo -> 这里是一个可变的引用，使用这种方法将会导致这个变量对应之前的所有引用都无效化
 }
 
