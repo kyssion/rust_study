@@ -1,4 +1,4 @@
-
+use std::intrinsics::arith_offset;
 
 //定义一个基本rust结构体
 struct User{
@@ -41,6 +41,7 @@ pub fn test_01(){
 
     //todo struct 生命周期 - 暂时略过
 
+    //
 }
 
 pub fn test_02(email : String,user_name:String)-> User{
@@ -52,3 +53,24 @@ pub fn test_02(email : String,user_name:String)-> User{
         sign_in_count:1
     }
 }
+
+//定义一个正方形结构体
+#[derive(Debug)]//显示的开启 debug 功能
+struct Rectangle{
+    width:u32,
+    height:u32
+}
+
+fn area(rectangle: &Rectangle)->u32{
+    return rectangle.height*rectangle.width;
+}
+
+pub fn example(){
+    let rect1 = Rectangle{
+        width:12,
+        height:10
+    };
+    let area = area(&rect1);
+    println!("{:#?}",rect1);//todo 使用{:#?}格式化输出 struct中的内容 只在debug模式中有效
+}
+
