@@ -19,9 +19,27 @@ impl  Rectangle{
         self.width+=i;
     }
 
-    //rust多参数例子
+    //rust多参数例子 -  第一个参数必须
     fn can_hold(&self,other : &Rectangle)->bool{
         return self.width>other.width&&self.height>other.height;
+    }
+    //todo 关联函数可以不初始化对象直接调用函数 - 特征： 没有self
+    fn square(size: u32)->Rectangle{
+        Rectangle{
+            width:size,
+            height:size
+        }
+    }
+}
+
+//任何一个结构体都支持多个关联的impl块
+impl Rectangle{
+    //todo 关联函数可以不初始化对象直接调用函数 - 特征： 没有self
+    fn square(size: u32)->Rectangle{
+        Rectangle{
+            width:size,
+            height:size
+        }
     }
 }
 
@@ -38,7 +56,10 @@ pub fn example(){
     println!("{:#?}",rect1);//todo 使用{:#?}格式化输出 struct中的内容 只在debug模式中有效
 
     //todo 使用结构体内置的方法输出数字
-    println!("{:?}",rect1.area());// todo rect1.area() 本身可以使用是因为rust提供了自动解引用和自动引用的功能
-    // rect1 本身其实是一个指针，上面的代码等价于 (&rect1).area();
+    println!("{:?}",rect1.area());// todo rect1.area() 本身可以使用是因为rust提供了自动解引用和自动引用的功能 ？？anwser 这里有问题 rust 中的& 和 × 的问题
+    // rect1 本身其实是一个指针，上面的代码等价于 (&rect1).area() rust 自动的添加了react的解引用
+
+    //todo 使用关联函数闯劲啊Rectangle
+    let p =Rectangle::square(12);
 }
 
