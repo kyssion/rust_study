@@ -1,7 +1,5 @@
-use std::intrinsics::arith_offset;
-
 //定义一个基本rust结构体
-struct User{
+pub struct User{
     user_name:String,
     email:String,
     sign_in_count: u64,

@@ -15,20 +15,13 @@ impl  Rectangle{
     }
 
     //rust 结构体的内置函数可以支持 可变引用
-    fn add_with(&mut self,i:i32){
+    fn add_with(&mut self,i:u32){
         self.width+=i;
     }
 
     //rust多参数例子 -  第一个参数必须
     fn can_hold(&self,other : &Rectangle)->bool{
         return self.width>other.width&&self.height>other.height;
-    }
-    //todo 关联函数可以不初始化对象直接调用函数 - 特征： 没有self
-    fn square(size: u32)->Rectangle{
-        Rectangle{
-            width:size,
-            height:size
-        }
     }
 }
 

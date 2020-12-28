@@ -1,3 +1,4 @@
+use crate::rust0004_enum_and_match::{test_match, Coin};
 
 mod rust0001_var_and_control_flow;
 mod rust0000_official_example;
@@ -7,7 +8,8 @@ mod rust0003_struct_2;
 mod rust0004_enum_and_match;
 
 fn main() {
-    println!("sdfsdfds");
+    let _ =test_match(Coin::Nickel);
+
 }
 
 pub fn test3_fn(s:&String) -> &str{
