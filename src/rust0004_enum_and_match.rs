@@ -79,7 +79,21 @@ pub fn test_match (item : Coin) -> i32{
             222
         },
         _ =>{ //todo　使用通配符_ 可以匹配其他未知情况
-
+            1
         }
+    }
+}
+
+//todo rust match 语法糖
+pub fn test_match_3(){
+    let item = Some(12);
+    let item2 = Some(Coin::Dime);
+    if let Some(i) = item { //这里使用rust的语法糖来简化只获取一个数据的场景
+        println!("{}",i)
+    } else if let Some(ddd) = item2 {//todo 如果之前的模式匹配了，接下来将不进行匹配
+        let p = ddd.type_id()==Coin::Dime.type_id();
+        println!("{:?}",p)
+    } else{
+
     }
 }
