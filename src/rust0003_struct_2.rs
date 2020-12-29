@@ -1,9 +1,10 @@
 //todo 结构体增加方法支持
 
 //定义一个正方形结构体
+//todo 这里注意一个结构的可见性细节，结构体pub 只是标志这个结构体可以被外部引用，但是里面的变量还是私有的，需要加上pub才能被外部使用
 #[derive(Debug)]//显示的开启 debug 功能
-struct Rectangle{
-    width:u32,
+pub struct Rectangle{
+    pub width:u32,
     height:u32
 }
 
