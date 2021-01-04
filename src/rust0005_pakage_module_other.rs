@@ -60,3 +60,18 @@ pub fn eat_at_restaurant2(){
 }
 
 //todo 一个疑问？ rust 的mod 的权限管理是啥样子的
+
+
+//todo 外部包
+
+use rand::Rng;
+
+//todo 使用嵌套路径整理包
+use std::{cmp::Ordering,io};
+//todo 等效于
+// use std::cmp::Ordering;
+// use std::io
+
+//todo 使用通配符引用所有的数据到指定的作用域
+use std::*;
+
