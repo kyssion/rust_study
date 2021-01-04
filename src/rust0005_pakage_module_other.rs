@@ -10,13 +10,13 @@
 //模块树 - todo 注意 ： 任何一个rust项目都有一个由 main.rs 或者lib.rs 构建的全局包 crate 所有的内部的包又是源于这个跟节点的
 // todo 注意了，所有的代码都有一个本文件名称的默认包名
 
-mod front_of_house{
+pub mod front_of_house{
     pub mod hosting{
        pub fn  add_to_wait_list(){}
         fn seat_at_table(){}
     }
 
-    mod serving {
+    pub mod serving {
         fn take_order() {
             //todo 使用super调用父相对作用域
             super::hosting::add_to_wait_list();
@@ -31,3 +31,32 @@ pub fn  eat_at_restaurant(){
     //使用相对路径调用包
     front_of_house::hosting::add_to_wait_list();
 }
+
+//todo 使用use 关键字将mod 路径引入当前作用域 - self 相对路径 crate 绝对路径 使用as 重新命名
+use crate::rust0005_pakage_module_other::front_of_house::hosting as two;
+use self::front_of_house2::hosting::add_to_wait_list as one;
+
+//todo 指定一个完成的枚举直接引入
+use std::collections::HashMap;
+use std::fmt;
+
+//todo 如果 名称相同的时候，需要指明父作用域
+
+// fn test1()->Result<()>{
+//     fmt::Result
+// }
+
+
+mod front_of_house2{
+    pub mod hosting{
+        pub fn add_to_wait_list(){}
+    }
+}
+
+use front_of_house2::hosting::add_to_wait_list;
+
+pub fn eat_at_restaurant2(){
+    add_to_wait_list()
+}
+
+//todo 一个疑问？ rust 的mod 的权限管理是啥样子的
