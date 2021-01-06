@@ -59,8 +59,6 @@ pub fn eat_at_restaurant2(){
     add_to_wait_list()
 }
 
-//todo 一个疑问？ rust 的mod 的权限管理是啥样子的
-
 
 //todo 外部包
 
@@ -74,4 +72,38 @@ use std::{cmp::Ordering,io};
 
 //todo 使用通配符引用所有的数据到指定的作用域
 use std::*;
+
+//todo 一个疑问？ rust 的mod 的权限管理是啥样子的pub
+
+//rust 的逻辑是这样的- 先找到公共的跟路径，然后从这个跟路径开始 只能找到pub标记的值
+// 比如 A的路径 a-b-c-d-e-f B 的路径 a-b-c-f-f - 公共根是c -> c 无需考虑是否是pub 引用放都是可见的， 剩下的子路径调用方必须保证是pub标记才能被使用
+mod sync_mod_test{
+    pub mod sync_mod_child_one{
+        mod sync_mod_cc_one_1{
+            use super::super::sync_mod_child_two::sync_mod_cc_one;
+            // use super::super::sync_mod_child_two::sync_mod_cc_two;
+            fn test(){
+                sync_mod_cc_one::gggg()
+            }
+        }
+    }
+
+
+    mod sync_mod_child_two{
+        pub mod sync_mod_cc_one{
+           pub fn gggg(){
+
+            }
+        }
+        mod sync_mod_cc_two{
+            pub fn gggg(){
+
+            }
+        }
+    }
+
+
+
+
+}
 
