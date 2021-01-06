@@ -9,27 +9,12 @@ mod rust0003_struct_1;
 mod rust0003_struct_2;
 mod rust0004_enum_and_match;
 mod rust0005_pakage_module_other;
+mod rust0006_collection;
 
 fn main() {
-    let item = Some(12);
-    let item2 = Some(Coin::Dime);
-    if let Some(i) = item {
-        println!("{}",i)
-    } else if let Some(ddd) = item2 {
-        let p = ddd.type_id()==Coin::Dime.type_id();
-        println!("{:?}",p)
-    } else{
+    let mut v = vec![1,2,3,4,5,6,7,8];
+    for i in &mut v{
 
     }
-
-}
-
-pub fn test3_fn(s:&String) -> &str{
-    let bytes = s.as_bytes();
-    for (i,&item) in bytes.iter().enumerate(){
-        if item == b' '{
-            return &s[0..i];
-        }
-    }
-    return &s[..];
+    v.push(1) // 这里因为有作用域的问题，所以可以v.push
 }
