@@ -1,6 +1,7 @@
 //集合
 
 use std::ops::Add;
+use std::collections::HashMap;
 
 //动态数组
 fn vec_test(){
@@ -60,6 +61,33 @@ fn test_string(){
 
     //todo rust 的 字符类型处理方法
     let mut stringItem  = String::from("AABBCCDDEEFF");
-    //todo rust中任意一个字符都是一个unicorn
+    //todo rust中任意一个字符都是一个unicode
+    //todo rust中的string类型是一个vec<u8> 封装 - 当时一个字符并不一定只有8字符
+    //todo rust中针对字符串使用下表操作的时候直接宝座
 
+    //let p = string1[0];// 非法
+
+    //todo 简单的讲其实是len的长度和字符的长度不同
+
+    //todo string 类型有 chars和char_indices 方法返回 char类型数组
+    for (size,c) in s.char_indices(){
+        println!("{:?} - {:?}",size,c)
+    }
+
+    //todo 使用bytes方法获取byte类型的数组
+    for c in s.bytes(){
+        println!("{:?}",c as char)
+    }
+}
+
+fn test_hash_map(){
+    //todo 直接使用new的方法创建 hashmap
+    let mut my_hash_map = HashMap::new();
+    my_hash_map.insert("key1", "value1");
+    my_hash_map.insert("key2", "value2");
+
+    //todo 使用数组列表的方法创建hashmap
+    let mut keys = vec!["key1","key2"];
+    let mut values = vec!["value1","value1"];
+    let my_hash_map :HashMap<&str,&str> = keys.iter().zip(values.iter()).collect();
 }
