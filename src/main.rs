@@ -1,6 +1,7 @@
 use crate::rust0004_enum_and_match::{test_match, Coin};
 use std::convert::TryInto;
 use std::any::Any;
+use std::ops::Add;
 
 mod rust0001_var_and_control_flow;
 mod rust0000_official_example;
@@ -12,9 +13,14 @@ mod rust0005_pakage_module_other;
 mod rust0006_collection;
 
 fn main() {
-    let mut v = vec![1,2,3,4,5,6,7,8];
-    for i in &mut v{
+    let mut string1 = String::from("A");
+    let mut string2 = String::from("B");
+    let mut string3 = String::from("C");
+    let s = format!("{}-{}-{}",string1,string2,string3);
 
-    }
-    v.push(1) // 这里因为有作用域的问题，所以可以v.push
+    print!("{}",s);
+    print!("{}",string1);
+    print!("{}",string2);
+    print!("{}",string3);
+
 }
