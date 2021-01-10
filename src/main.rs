@@ -14,8 +14,9 @@ mod rust0005_pakage_module_other;
 mod rust0006_collection;
 
 fn main() {
-    let mut keys = vec!["key1","key2"];
-    let mut values = vec!["value1","value1"];
-    let my_hash_map :HashMap<_,_> = keys.iter().zip(values.iter()).collect();
-    println!("{:?}",my_hash_map.get(&"key"))
+    let mut my_hash_map = HashMap::new();
+    my_hash_map.insert("key","value");
+    let mut valueOption = my_hash_map.get("key");
+    let mut value = *valueOption.unwrap();
+    println!("{:?}",value)
 }

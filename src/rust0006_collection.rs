@@ -83,11 +83,32 @@ fn test_string(){
 fn test_hash_map(){
     //todo 直接使用new的方法创建 hashmap
     let mut my_hash_map = HashMap::new();
+    //todo 这里注意一下所有权的问题一旦键值对被插入了，所有权也就转移到了map中了
     my_hash_map.insert("key1", "value1");
     my_hash_map.insert("key2", "value2");
 
     //todo 使用数组列表的方法创建hashmap
     let mut keys = vec!["key1","key2"];
     let mut values = vec!["value1","value1"];
-    let my_hash_map :HashMap<&str,&str> = keys.iter().zip(values.iter()).collect();
+    let my_hash_map :HashMap<&&str,&&str> = keys.iter().zip(values.iter()).collect();
+    //todo 这种方法以后在尽心研究
+
+
+    //todo 获取值
+    let mut my_hash_map = HashMap::new();
+    my_hash_map.insert("key",0);
+    let mut valueOption = my_hash_map.get("key");
+    let mut value = *valueOption.unwrap();
+
+    //todo rust map 遍历 - 注意这里要使用 引用，不然就所有权转移了
+    for (key,value) in &my_hash_map{
+    }
+
+    let string = [String::from("aaa"),String::from("bbb"),String::from("ccc")];
+    for str in string{
+        //使用 entry+ or_insert  - 进行判断是否为空并且加入必要哦的值
+        let value_str = my_hash_map.entry(str).or_insert(0);
+        *value+= 1;
+    }
+
 }
