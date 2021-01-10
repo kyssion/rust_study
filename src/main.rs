@@ -12,6 +12,7 @@ mod rust0003_struct_2;
 mod rust0004_enum_and_match;
 mod rust0005_pakage_module_other;
 mod rust0006_collection;
+mod rust0007_error;
 
 fn main() {
     let mut my_hash_map = HashMap::new();
