@@ -105,10 +105,10 @@ fn test_hash_map(){
     }
 
     let string = [String::from("aaa"),String::from("bbb"),String::from("ccc")];
-    for str in string{
+    for str in &string{
         //使用 entry+ or_insert  - 进行判断是否为空并且加入必要哦的值
         let value_str = my_hash_map.entry(str).or_insert(0);
-        *value+= 1;
+        value = value+ 1;
     }
 
 }

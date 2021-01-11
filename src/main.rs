@@ -3,6 +3,7 @@ use std::convert::TryInto;
 use std::any::Any;
 use std::ops::Add;
 use std::collections::HashMap;
+use crate::rust0008_generics::Summary;
 
 mod rust0001_var_and_control_flow;
 mod rust0000_official_example;
@@ -15,10 +16,18 @@ mod rust0006_collection;
 mod rust0007_error;
 mod rust0008_generics;
 
+trait SummaryItem {
+    fn show(&self);
+}
+
+impl SummaryItem for String{
+    fn show(&self) {
+        println!("fffffff")
+    }
+}
+
 fn main() {
-    let mut my_hash_map = HashMap::new();
-    my_hash_map.insert("key","value");
-    let mut valueOption = my_hash_map.get("key");
-    let mut value = *valueOption.unwrap();
-    println!("{:?}",value)
+    let str = String::from("zzzz");
+    str.show();
+    str.summarize();
 }

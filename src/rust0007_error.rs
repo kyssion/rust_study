@@ -2,7 +2,6 @@
 
 use std::fs::File;
 use std::io::{ErrorKind, Read};
-use core::panicking::panic_fmt;
 use std::io;
 use std::fs;
 
@@ -12,7 +11,7 @@ fn test_panic(){
     //这种错误属于不可恢复错误
 }
 
-fn test_result -> Result<String,io::Error>{
+fn test_result() -> Result<String,io::Error>{
     //rust 中的可回复错误
     //rust 中使用的Result<T,E> 结构体来描述一个error
     let f = File::open("xxx.test");
