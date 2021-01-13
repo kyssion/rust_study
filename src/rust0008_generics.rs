@@ -67,6 +67,11 @@ impl Summary for String{
     }
 
 }
+
+
+trait Summary2 {
+    fn summarize(&self);
+}
 //todo trait 不支持 trait和对应的结构体都不在当前包下进行定义
 // impl Display for String{
 //     fn fmt(&self, f: &mut Formatter<'_>) -> Result<String,Error> {
@@ -75,13 +80,50 @@ impl Summary for String{
 // }
 
 
-//todo 使用trait 作为参数
+//todo 使用trait 作为参数 -  使用+ 同时支持两种trait
 //1. 简化版
-fn test_trait_params(t : impl Summary){
+fn test_trait_params(t : impl Summary+Summary2){
 
 }
 //2. 高级版 rust 使用范型来规定 trait 类型
-fn test_trait_params_up <T : Summary>(t: T,p:T){ //todo 注意这里，这里使用了范型，那么，rust会强制要求t.p 大类型相同，而不是都实现了trait即可
+fn test_trait_params_up <T : Summary+Summary2>(t: T,p:T){ //todo 注意这里，这里使用了范型，那么，rust会强制要求t.p 大类型相同，而不是都实现了trait即可
 
 }
 
+//3. 将约束使用where包装简化操作
+
+fn test_trait_params_end <T,U> (t:T,u:U) ->String where T:Summary+Summary2,U:Summary+Summary2{
+    return String::from("ffff")
+}
+
+//todo rust 的返回值限制 - 只能返回相同类型的trait 实现类
+
+fn test_trait_reture()->impl Summary{
+    return String::from("f")
+}
+
+
+//rust 牛逼功能，有条件的实现trait
+
+struct Pair<T>{
+    x:T,
+    y:T
+}
+impl <T> Pair<T>{
+    fn new(x:T,y:T)->Self{
+        return Self{
+            x,
+            y,
+        }
+    }
+}
+//只有当 T 同时满足了 display + paritalOrd 约束的时候 才能 满足这个 cmp_display
+impl <T:Display+PartialOrd> Pair<T>{
+    fn cmp_display(&self){
+        if self.x>self.y{
+            println!("xxxx = {}",self.x)
+        }else{
+            println!("yyyy = {}",self.y)
+        }
+    }
+}
