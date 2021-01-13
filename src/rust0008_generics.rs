@@ -73,3 +73,15 @@ impl Summary for String{
 //         return Ok(String::from("ffff"))
 //     }
 // }
+
+
+//todo 使用trait 作为参数
+//1. 简化版
+fn test_trait_params(t : impl Summary){
+
+}
+//2. 高级版 rust 使用范型来规定 trait 类型
+fn test_trait_params_up <T : Summary>(t: T,p:T){ //todo 注意这里，这里使用了范型，那么，rust会强制要求t.p 大类型相同，而不是都实现了trait即可
+
+}
+

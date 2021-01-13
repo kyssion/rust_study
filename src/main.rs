@@ -19,15 +19,38 @@ mod rust0008_generics;
 trait SummaryItem {
     fn show(&self);
 }
+struct One{
 
-impl SummaryItem for String{
+}
+
+struct Two{
+
+}
+
+impl SummaryItem for One{
     fn show(&self) {
         println!("fffffff")
     }
 }
 
+impl SummaryItem for Two{
+    fn show(&self) {
+        println!("fffffff")
+    }
+}
+
+fn test_trait_main_1 <T: SummaryItem>(a:T,b:T){
+    a.show();
+    b.show();
+}
+
+fn test_trait_main_2(a : impl SummaryItem,b:impl SummaryItem){
+    a.show();
+    b.show();
+}
+
 fn main() {
-    let str = String::from("zzzz");
-    str.show();
-    str.summarize();
+    let a = One{};
+    let b = One{};
+    test_trait_main_1(a,b);
 }
