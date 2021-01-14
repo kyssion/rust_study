@@ -50,7 +50,9 @@ fn test_trait_main_2(a : impl SummaryItem,b:impl SummaryItem){
 }
 
 fn main() {
-    let a = One{};
-    let b = One{};
-    test_trait_main_1(a,b);
+    let str1 = String::from("a");
+    let str2 = String::from("a");
+
+    let vector = [1, 2];
+    let a = vector[0];
 }
