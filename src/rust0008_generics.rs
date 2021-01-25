@@ -127,3 +127,33 @@ impl <T:Display+PartialOrd> Pair<T>{
         }
     }
 }
+
+//todo rust lift style - rust 生命周期
+
+// rust 通过给变量增加作用域来解决的悬空引用的问题的
+// todo 这段代码是无法通过编译的因为 x 和 y 这两个参数作为了 str的返回值 -> str 的无法在一开始就确定生命周是使用 x的还是使用y的 所以报错
+// todo 原则 - 编译期决定生命周期的规则 ， 默认情况下，返回值的生命周期必须为参数中的一个- 下面例子的str产生了二义性
+// fn lift_test(x:&str,y:&str)-> &str{
+//     if x.len()>y.len(){
+//         x
+//     }else{
+//         y
+//     }
+// }
+
+//这样就能进行修正了 str 返回值的生命周期就是  传入参数 x 和 y 的最小值
+fn  lift_test<'a>(x:&'a str,y :&'a str)-> &'a str{
+    if x.len()>y.len(){
+        x
+    }else{
+        y
+    }
+}
+
+//todo 结构体生命周期标注 - 结构体在rust相当于一个数据的集合， 结构体中的生命周期用来描述 当前的结构体的生命周器和那个变量的生命周期相同
+//todo ?? 标注了一个表示当前生命周期最大是一个变量的生命周期，如果两个呢
+struct ImportantExcerpt<'a,'b>{
+    part: &'a str,
+    part2: &'b str
+}
+//todo 全局变量， 静态生命周期 'static
