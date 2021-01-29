@@ -15,6 +15,7 @@ mod rust0005_pakage_module_other;
 mod rust0006_collection;
 mod rust0007_error;
 mod rust0008_generics;
+mod rust0009_io;
 
 trait SummaryItem {
     fn show(&self);
