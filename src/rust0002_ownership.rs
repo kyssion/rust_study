@@ -7,7 +7,7 @@ pub fn ownership_main(){
 
     let mut string  = String::from("string item");
     string.push_str(" push start");
-    //todo 和 &str 相比，&str 不可变
+    //todo 和 string 相比，&str 不可变 - 相当于 一个借用
     let mut str = "str item";
 
     //todo 克隆和转移 - 基本的变量进行赋值的时候的默认使用的方法是clone
@@ -69,6 +69,7 @@ fn test_main() {
     let word = test3_fn(&string);
     println!("{}",word);
     string.clear(); // todo -> 这里是一个可变的引用，使用这种方法将会导致这个变量对应之前的所有引用都无效化
+
 }
 
 pub fn test3_fn(s:&String) -> &str{
