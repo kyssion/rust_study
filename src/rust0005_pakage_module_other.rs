@@ -76,6 +76,7 @@ use std::*;
 //todo 一个疑问？ rust 的mod 的权限管理是啥样子的pub
 
 //rust 的逻辑是这样的- 先找到公共的跟路径，然后从这个跟路径开始 只能找到pub标记的值
+//todo 像一个树杈
 // 比如 A的路径 a-b-c-d-e-f B 的路径 a-b-c-f-f - 公共根是c -> c 无需考虑是否是pub 引用放都是可见的， 剩下的子路径调用方必须保证是pub标记才能被使用
 mod sync_mod_test{
     pub mod sync_mod_child_one{

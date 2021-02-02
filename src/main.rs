@@ -51,9 +51,9 @@ fn test_trait_main_2(a : impl SummaryItem,b:impl SummaryItem){
 }
 
 fn main() {
-    let str1 = String::from("a");
-    let str2 = String::from("a");
+    let mut arr = vec![1,2,3,4];
+    let p = &mut arr;
+    let z = arr[0];
+    println!("{}",arr[0])
 
-    let vector = [1, 2];
-    let a = vector[0];
 }
