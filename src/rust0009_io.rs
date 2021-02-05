@@ -3,6 +3,7 @@
 
 use std::*;
 use std::ffi::OsString;
+use std::fs;
 
 fn test_item(){
     //这种方法获取命令行参数的时候，如果是非Unicode编码的时候会painc
@@ -16,5 +17,9 @@ fn test_item(){
     let arg2 = &itemVar[1];
     let i = [1,2,3,4,5];
     let mut p = &i[0];
+
+    //文件读取方法
+    let contents =  fs::read_to_string("xx").expect("read file error");
+
 
 }
