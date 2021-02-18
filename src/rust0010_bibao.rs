@@ -21,7 +21,6 @@ fn test1(){
     let bItem = |param : i32|->i32{
         param
     };
-
-    //todo 支持范型
-
 }
+
+//todo rust 闭包，惰性求值 -  rust可以使用结构体 + 闭包传参 - 动态创建闭包封装
