@@ -16,6 +16,7 @@ mod rust0006_collection;
 mod rust0007_error;
 mod rust0008_generics;
 mod rust0009_io;
+mod rust0010_bibao;
 
 trait SummaryItem {
     fn show(&self);
