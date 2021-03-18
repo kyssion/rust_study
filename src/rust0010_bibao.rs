@@ -14,6 +14,7 @@ fn test1(){
     let bItem = |params|{
         params
     };
+
     let v = bItem(123);
 
     let bItem = |params|params;// 简化写法

@@ -17,6 +17,7 @@ mod rust0007_error;
 mod rust0008_generics;
 mod rust0009_io;
 mod rust0010_bibao;
+mod rust0011_diedaiqi;
 
 trait SummaryItem {
     fn show(&self);
@@ -52,9 +53,7 @@ fn test_trait_main_2(a : impl SummaryItem,b:impl SummaryItem){
 }
 
 fn main() {
-    let mut arr = vec![1,2,3,4];
-    let p = &mut arr;
-    let z = arr[0];
-    println!("{}",arr[0])
+
+
 
 }

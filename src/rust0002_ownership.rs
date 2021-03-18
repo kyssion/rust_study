@@ -40,6 +40,7 @@ pub fn ownership_main(){
     // todo 也就是说针对这种可以进行修改的引用，在同一个时间内只有一个有效果
     // todo rust 的引用规则其实简单的说有一下的几个规则
     // todo 以可变引用为分界线，形成代码快，每一个代码块中的所有不可变引用都应该保证在块外没有使用
+    // todo 就是按照 mut  进行分割
     let mut i = String::from("sdfsdf");
     let k = &i;
     let j = &i;
