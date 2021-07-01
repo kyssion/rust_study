@@ -11,8 +11,17 @@ pub fn test(){
     //todo rust 这里很严谨，如果是类似对象的这种情况- rust本身应该是禁止所有权转移的 ， 数组验证过， 结构体待验证 ， 元祖代验证
 
     //4. 借用和可变引用 , 规则： 一旦出现mut引用的时候，之前的所有非mut引用将会无效，任何一个变量只能有一个可变引用
+    // 借用要注意下： 必须保证有效， 否则借就没有意义了
+    // 注意这里使用的时候 可能会有隐形引用的场景
     let mut a = [String::from("fff"),String::from("fff"),String::from("fff"),String::from("fff")];
 
     let p = &a[0];//这里指定了一个引用
     let p = &mut a[0];//这里指定了一个可变引用
+
+
+    //5. rust 切片 - 数组类型 字符串或者数组 ，
+    //todo 可变性的支持， 是否可变??
+
+    let str= String::from("fffff");
+    let p = &str[..1];
 }
