@@ -1,11 +1,4 @@
 
-enum Item{
-    String(String),
-    I32(i32),
-    I64(i64),
-    USIZE(usize)
-}
-
 pub fn vec_test(){
     let mut vecItem:Vec<i32> = Vec::new();
     let mut vecItem = vec![1,2,3,4,5];
@@ -18,14 +11,12 @@ pub fn vec_test(){
 
     }
     for i in &mut vecItem{
-        *i+=1;//todo 注意， 这里需要手动解引用
+
     }
     // todo 注意这里有问题， for in 本质上是语法糖，是一个函数， 调用的时候所有权向下转移了
     for i in vecItem{
 
     }
 
-    //3. 嫂操作， vec可以和enum 结合实现多类型的数组
-    let arr = vec![Item::String(String::from("now string")),Item::I32(123),Item::USIZE(333)];
     return
 }
