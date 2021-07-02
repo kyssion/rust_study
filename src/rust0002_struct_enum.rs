@@ -126,7 +126,7 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
 }
 
 //7. rust if let => 简化版match ， 下面两种写法等价
-fn if_let(c : coin){
+fn if_let(c : Coin){
 
     let p = match c {
         Coin::Five {x}=>x,

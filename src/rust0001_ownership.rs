@@ -22,6 +22,11 @@ pub fn test(){
     //5. rust 切片 - 数组类型 字符串或者数组 ，
     //todo 可变性的支持， 是否可变??
 
-    let str= String::from("fffff");
+    let mut str= String::from("fffff");
     let p = &str[..1];
+
+    //6. 引用本身是一种指针， 但是可以使用.xxx() 调用方法， 本质上是因为它实现了自动接引用的能力
+    let z = &mut str;
+    z.push('z');
+    (*z).push('z')
 }
