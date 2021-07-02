@@ -36,6 +36,12 @@ pub fn test(){
     //5. todo rust 结构体， 中的引用 - 需要标记生命周期
 
 
+    //6. rust struct 相同变量名称快速初始化
+    let name = String::from("ffff");
+    let age = 123;
+    let c = User{
+        name,age
+    };
 }
 
 impl User{
@@ -53,6 +59,27 @@ impl User{
     }
 }
 
-pub fn test_func(){
+//1. rust enum 可以类型不同
+enum IpAddr{
+    IPV4(i32,i32,i32,i32),
+    IPV6(String)
+}
+//2. rust 的enum 支持任意类型的数据
+enum Message{
+    Quit,
+    Move {x:i32,y:i32}, //  3. rust enum 支持匿名结构体
+    Write (i32),
+    ChangeColor
+}
+
+pub fn test_enum(){
+    //4. rust enum 不同的数据类型状态但是类型可以不同
+    ans(Message::Quit);
+    ans(Message::Write(13));
+    //5. rust enum 初始化
+    let item = Message::Move {x:123,y:334};
+}
+
+fn ans(item:Message){
 
 }
