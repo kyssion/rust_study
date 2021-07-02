@@ -47,7 +47,7 @@ pub fn test(){
 impl User{
     //用偶self 标记的表示 结构体方法
     fn show_name(&self){
-        println!(self.name)
+        println!("{}",self.name)
     }
 
     // 没有self 标是关联函数， 需要使用impl块名称：： 方法名称来使用 ，  类似String::from
@@ -81,5 +81,61 @@ pub fn test_enum(){
 }
 
 fn ans(item:Message){
+}
 
+pub enum Coin{
+    One,
+    Two,
+    Three,
+    Four(CoinStatus),
+    Five {x:i32}
+}
+
+//todo 这个注解可以让println打印出来，其他的功能待定
+#[derive(Debug)]
+pub enum CoinStatus{
+    Use,
+    NoUser
+}
+
+fn match_support(){
+
+}
+
+pub fn test3(c : Coin)-> i32{
+    match c {
+        Coin::One=> 1,
+        Coin::Two=>2,
+        Coin::Three=>3,
+        Coin::Four(status)=>{ //6. rust 可以直接解析数据
+            println!("{:?}",status);
+            4
+        },
+        Coin::Five{x} =>{
+            println!("{:?}",x);
+            x
+        }
+    }
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),//option 相当于一个特殊的枚举， 返回一个新的数据
+    }
+}
+
+//7. rust if let => 简化版match ， 下面两种写法等价
+fn if_let(c : coin){
+
+    let p = match c {
+        Coin::Five {x}=>x,
+        _=>0
+    };
+
+    let p = if let Coin::Five {x}=c{
+        x
+    }else{
+        0
+    };
 }

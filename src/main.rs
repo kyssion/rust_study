@@ -4,5 +4,5 @@ mod rust0002_struct_enum;
 
 
 fn main(){
-    rust0001_ownership::test()
+
 }
