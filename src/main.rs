@@ -5,5 +5,5 @@ mod rust0003_collection_string_map;
 
 
 fn main(){
-
+    rust0003_collection_string_map::string_test()
 }
