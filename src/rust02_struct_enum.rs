@@ -130,7 +130,8 @@ fn if_let(c : Coin){
 
     let p = match c {
         Coin::Five {x}=>x,
-        _=>0
+        Coin::Three=> 123,
+        _=>2
     };
 
     let p = if let Coin::Five {x}=c{
