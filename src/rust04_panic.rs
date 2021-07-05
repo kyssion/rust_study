@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::io::{ErrorKind, Read};
 use std::error::Error;
+use std::io;
 
 pub fn test_panic(){
     //1. 抛出一个异常
@@ -36,7 +37,7 @@ pub fn test_panic(){
 }
 
 
-pub fn test_result()->Result<String, dyn Error>{
+pub fn test_result()->Result<String, io::Error>{
     //1. result 一般错误链写法
     let f = File::open("hello.txt");
 
@@ -47,16 +48,23 @@ pub fn test_result()->Result<String, dyn Error>{
 
     let mut s = String::new();
 
-    match f.read_to_string(&mut s) {
+    let p= match f.read_to_string(&mut s) {
         Ok(_) => Ok(s),
         Err(e) => Err(e),
-    }
+    };
     //2. 特殊错误链写法 ? 关键字
     let mut f = File::open("hello.txt")?;
     let mut s = String::new();
-    f.read_to_string(&mut s)?;
-    Ok(s);
+    let s=f.read_to_string(&mut s)?;
     //3. ？关键字的链式调用
+    let mut s = String::new();
+
+    let f = File::open("hello.txt")?.read_to_string(&mut s)?;
+    Ok(s)
+}
+
+
+fn read_username_from_file() -> Result<String, io::Error> {
     let mut s = String::new();
 
     File::open("hello.txt")?.read_to_string(&mut s)?;
