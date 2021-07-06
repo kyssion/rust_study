@@ -91,6 +91,17 @@ impl Summary for Tweet {
         return String::from("prn tweet")
     }
 }
+//2.rust 针对 traits 使用的限制 ： 不能出现三处差异， 比如 traits定义的问题，需要升级的struct位置和定义引用的位置存在3不同
+impl Summary for String{
+    fn summarize(&self) -> String {
+        return String::from(self);
+    }
+
+    fn prn() -> String {
+        return String::from("z")
+    }
+}
+
 
 pub fn test(){
     let tweet = Tweet {

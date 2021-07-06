@@ -25,13 +25,3 @@ impl Summary for P{
         return String::from("P")
     }
 }
-
-impl Summary for String{
-    fn summarize(&self) -> String {
-        return String::from(self);
-    }
-
-    fn prn() -> String {
-        return String::from("z")
-    }
-}
