@@ -49,7 +49,7 @@ fn enum_type(){
     let a = Test::One(String::from("ffff"));
 }
 
-//1. rust traits - 类似其他编程语言的接口概念， 但是还是有一些区别
+//1. rust traits - 类似其他编程语言的接口概念， 但是还是有一些区别 , 比如如果实现了覆盖操作， 那么就不能调用默认的设置了， 没有类似java的 super. 这种方法
 // rust 中的traits 其实实现了 定义一组类型的通用能力
 
 pub trait Summary {
