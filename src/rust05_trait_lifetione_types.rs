@@ -213,3 +213,78 @@ impl <T:Display+Summary> TestTrait for T{
         todo!()
     }
 }
+
+//----- lifeStyle - 生命周期
+//1. rust 的生命周期其实是针对 一个变量有效范围的标记
+
+fn test1(){
+    //一个变量可以使用的范围是不能超过他生命周期的范围的
+    {
+        let mut r;        // ---------+-- 'a
+                                //          |
+        {                       //          |
+            let x = 5;     // -+-- 'b  |
+            r = &x;             //  |       |
+        }                       // -+       |
+        r=&123;                 //          |
+        println!("r: {}", r);   //          |
+    }                           // ---------+
+}
+
+//2. rust 函数使用时候的生命周期
+//如果不指定生命周期会报错，因为传入的参数有两个引用， 这两个引用可能有两种不同的生命周期，这种情况下可能会导致rust无法确认返回值的生命周期是否有效从而导致悬空引用
+
+/// 如果rust 返回的是一个借用 - 这个时候， rust 需要指定生命周期，需要使用生命周期函数
+/// 注意 rust的生命周期是 - 针对rust 返回值指定的方法
+/// 注意， rust 这里生命周期类似一种分组的概念， 多个相同生命周期标记的方法会让最终的生命周期标记的生命周期长度最短的那个
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+
+fn test2(){
+    let string1 = String::from("long string is long");
+    let result;
+    {
+        let string2 = String::from("xyz");
+        /// 这里使用longest方法的时候传入的两个参数的生命周期不同
+        /// 但是rust方法中生命周期签名使用的都是 ‘a
+        /// rust这里处理方法使用两个生命周期最短的那个来指定
+        result = longest(string1.as_str(), string2.as_str());
+        println!("The longest string is {}", result);
+    }
+    ///这里存在问题， result的生命周期和这里生命周期不匹配
+    //println!("The longest string is {}", result);
+}
+
+/// 注意 rust 结构体中如果需要使用引用的时候， 需要增加生命周期参数
+struct ItemInfo<'a>{
+    part : &'a str,
+    init: &'static str // 特殊的static 生命周期标记， 这个标记表示，这个应用在函数生命周期整个生命范围中都有效
+}
+
+impl ItemInfo{
+    fn init<'a>(&self, i: &'a str) -> &'a str {
+        return i;
+    }
+    //3. rust 的生命周期使用的 如果进行指定的话， 如果有self 这种场景， 默认就是使用self来作为默认的生命周期长度
+    fn init2(&self, i: &str) -> &str {
+        return i;
+    }
+}
+
+/// 既指定生命周期， 又指定范型类型的写法
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+    where
+        T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
