@@ -277,10 +277,7 @@ impl ItemInfo{
 }
 
 /// 既指定生命周期， 又指定范型类型的写法
-fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
-    where
-        T: Display,
-{
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str where T: Display, {
     println!("Announcement! {}", ann);
     if x.len() > y.len() {
         x
