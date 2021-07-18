@@ -250,29 +250,31 @@ fn test2(){
     let result;
     {
         let string2 = String::from("xyz");
-        /// 这里使用longest方法的时候传入的两个参数的生命周期不同
-        /// 但是rust方法中生命周期签名使用的都是 ‘a
-        /// rust这里处理方法使用两个生命周期最短的那个来指定
+        /* 这里使用longest方法的时候传入的两个参数的生命周期不同
+         * 但是rust方法中生命周期签名使用的都是 ‘a
+         * rust这里处理方法使用两个生命周期最短的那个来指定
+         */
         result = longest(string1.as_str(), string2.as_str());
         println!("The longest string is {}", result);
     }
-    ///这里存在问题， result的生命周期和这里生命周期不匹配
+    /* 这里存在问题， result的生命周期和这里生命周期不匹配 */
     //println!("The longest string is {}", result);
 }
 
 /// 注意 rust 结构体中如果需要使用引用的时候， 需要增加生命周期参数
-struct ItemInfo<'a>{
+struct ItemInfo<'a,'c>{
     part : &'a str,
-    init: &'static str // 特殊的static 生命周期标记， 这个标记表示，这个应用在函数生命周期整个生命范围中都有效
+    init: &'static str, // 特殊的static 生命周期标记， 这个标记表示，这个应用在函数生命周期整个生命范围中都有效
+    intc: &'c str
 }
 
-impl ItemInfo{
-    fn init<'a>(&self, i: &'a str) -> &'a str {
-        return i;
+impl<'a,'c> ItemInfo<'_,'c>{
+    fn init<'b>(&self, i: &'b str) -> &'b str {
+        return i
     }
     //3. rust 的生命周期使用的 如果进行指定的话， 如果有self 这种场景， 默认就是使用self来作为默认的生命周期长度
-    fn init2(&self, i: &str) -> &str {
-        return i;
+    fn init2(&self, i: &str) -> & str {
+        return "fdf";
     }
 }
 
