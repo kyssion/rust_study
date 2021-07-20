@@ -9,10 +9,18 @@ mod rust05_trait_lifetione_types;
 mod rust06_functional_features;
 
 fn main(){
-    let x = 4;
-    let p = |z| {x==z};
-    // fn qual_to_x(z :i32)->bool{ z==x }
-    println!("{}",p(123))
+    let mut string_item = String::from("this is test");
+    let mut fn_once = ||{
+        string_item.push_str("fffdsf");
+        println!("{}",string_item);
+    };
+    fn_once();
+    fn_once();
+    println!()
+}
+
+fn test(str: String){
+    println!("{}",str)
 }
 
 struct P{}
