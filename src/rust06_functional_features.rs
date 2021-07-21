@@ -5,6 +5,7 @@ pub fn test<T>(i:T){
     let test_fn = |num : T| ->T {
         return num;
     };
+
     //2. 函数变量
     let c= ppp;
     c(111);
