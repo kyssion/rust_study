@@ -1,4 +1,7 @@
 //rust 迭代器和闭包
+fn ppp<'a,T>(i : T){
+    println!("dfsdfsf");
+}
 
 pub fn test<T>(i:T){
     //1. 声明一个闭包 - 支持范型但是这个支持需要外部函数的支持， 同理生命周期也是一样的
@@ -46,6 +49,20 @@ pub fn test<T>(i:T){
     };
 }
 
-fn ppp<'a,T>(i : T){
-    println!("dfsdfsf");
+pub fn iter_test(){
+    let mut v1 = vec![1,2,3,4];
+    // rust 中支持迭代器 ， 同意实现trait - iterator
+    //1. 使用iter迭代器 - 直接使用
+    let v1_iter  = v1.iter();
+    let all = v1_iter.sum();
+    //1.1 for 循环使用
+    for val in v1.iter(){}
+    //1.2 手动调用
+    let mut v1_iter = v1.iter(); // 注意这里必须要是可变的， 如果不是可变的， for循环和类似。sum的这种调用方法相当于在内部使用mut self 引用了
+    v1_iter.next();
+
+    //2. rust 支持的其他迭代器类型
+    let v1_iter = v1.iter(); //返回内部对象不可变引用
+    let v1_item = v1.into_iter();// 基本上不用，返回内部对象带上所有权的变量
+    let v1_item = v1.iter_mut();//返回内部变量的可变引用- 注意了， 这个要求v1 对象需要可变
 }
