@@ -65,4 +65,39 @@ pub fn iter_test(){
     let v1_iter = v1.iter(); //返回内部对象不可变引用
     let v1_item = v1.into_iter();// 基本上不用，返回内部对象带上所有权的变量
     let v1_item = v1.iter_mut();//返回内部变量的可变引用- 注意了， 这个要求v1 对象需要可变
+
+    //3. rust 迭代器 生成collection
+
+    let v2 = vec![1,2,3,4];
+    //3.1 使用自定义映射方法获取新的值 - todo 这里连用了闭包的能力， 其实可以直接使用环境中可用的引用  。  后续研究一下可用性
+    let v2_list = v2.iter().map(|x|{x+1}).collect();
+
+}
+
+/// 自定义迭代器
+pub fn test_self(){
+
+}
+
+struct Counter{
+    count:i32,
+}
+
+impl Counter{
+    fn new()->Counter{
+        Counter{count:0}
+    }
+}
+
+impl Iterator for Counter{
+    type Item = i32;//这里指定迭代器子元素的类型
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.count+=1;
+        return if self.count < 6 {
+            Some(self.count)
+        } else {
+            None
+        }
+    }
 }
