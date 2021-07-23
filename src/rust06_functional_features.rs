@@ -76,7 +76,8 @@ pub fn iter_test(){
 
 /// 自定义迭代器
 pub fn test_self(){
-
+    //尝试使用自定义的迭代器
+    let sum = Counter::new().zip(Counter::new().skip(1)).map(|(a,b)|{a*b}).filter(|x|x%3==0).sum();
 }
 
 struct Counter{
