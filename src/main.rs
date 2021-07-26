@@ -7,6 +7,7 @@ mod rust03_collection_string_map;
 mod rust04_panic;
 mod rust05_trait_lifetione_types;
 mod rust06_functional_features;
+mod rust07_box_pointer;
 
 fn main(){
     let mut string_item = String::from("this is test");
